@@ -1,6 +1,15 @@
-﻿namespace DualTechTechnicalTest.Mappers;
+﻿using AutoMapper;
+using DualTechTechnicalTest.Domain.Entities;
+using DualTechTechnicalTest.Domain.Models.DataTransferObject;
 
-public class ProductMapper
+namespace DualTechTechnicalTest.Mappers;
+
+public class ProductMapper : Profile
 {
+    public ProductMapper()
+    {
+        CreateMap<Product, ProductDataTransferObject>();
+        CreateMap<ProductDataTransferObject, Product>();
+    }
     
 }

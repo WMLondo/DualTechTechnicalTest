@@ -10,7 +10,7 @@ namespace DualTechTechnicalTest.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class OrdersControllers(IUnitOfWork unitOfWork, IMapper mapper) : ControllerBase
+public class OrdersController(IUnitOfWork unitOfWork, IMapper mapper) : ControllerBase
 {
     [HttpPost("create")]
     public async Task<IActionResult> CreateAsync(
@@ -119,7 +119,7 @@ public class OrdersControllers(IUnitOfWork unitOfWork, IMapper mapper) : Control
         {
             var bodyDetail = body.Details.First(x => x.ProductId == product.Id);
             var detailSubtotal = bodyDetail.Quantity * product.Price;
-            var detailTax = detailSubtotal * (decimal)0.15;
+            var detailTax = detailSubtotal * 0.15m;
 
             var detail = new OrderDetail()
             {

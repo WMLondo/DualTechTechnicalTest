@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace DualTechTechnicalTest.Domain.Repository.Contracts;
+namespace DualTechTechnicalTest.Domain.Repositories.Contracts;
 
 public interface IRepository<TEntity>
 {
@@ -20,14 +20,7 @@ public interface IRepository<TEntity>
 
     Task<TEntity> CreateAsync(TEntity entity, CancellationToken cancellationToken = default);
 
-    Task<bool> CreateRangeAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken = default);
-
     Task<TEntity> UpdateAsync(TEntity entity, CancellationToken cancellationToken = default);
 
     Task<TEntity> DeleteAsync(TEntity entity, CancellationToken cancellationToken = default);
-
-    Task<bool> AnyAsync(Expression<Func<TEntity, bool>>? predicate = null, CancellationToken cancellationToken = default);
-
-    Task<int> CountAsync(Expression<Func<TEntity, bool>>? predicate = null, CancellationToken cancellationToken = default);
-
 }

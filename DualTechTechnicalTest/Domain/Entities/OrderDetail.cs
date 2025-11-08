@@ -1,6 +1,6 @@
-﻿namespace DualTechTechnicalTest.Domain;
+﻿namespace DualTechTechnicalTest.Domain.Entities;
 
-public class OrderDetail
+public sealed class OrderDetail
 {
     public int Id { get; set; }
 
@@ -11,5 +11,13 @@ public class OrderDetail
     public decimal Subtotal { get; set; }
 
     public decimal Total { get; set; }
+
+    public int OrderId { get; set; }
+
+    public Order? Order { get; set; }
+
+    public int ProductId { get; set; }
+
+    public Product? Product { get; set; }
     
 }

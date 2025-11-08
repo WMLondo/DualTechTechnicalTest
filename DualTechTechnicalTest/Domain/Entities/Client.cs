@@ -1,4 +1,4 @@
-﻿namespace DualTechTechnicalTest.Domain;
+﻿namespace DualTechTechnicalTest.Domain.Entities;
 
 public sealed class Client
 {
@@ -6,7 +6,7 @@ public sealed class Client
 
     public string? Name { get; set; }
 
-    public string? Description { get; set; }
+    public string? Identity { get; set; }
     
     public ICollection<Order>? Orders { get; set; }
 }

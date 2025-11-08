@@ -1,4 +1,4 @@
-﻿namespace DualTechTechnicalTest.Domain;
+﻿namespace DualTechTechnicalTest.Domain.Entities;
 
 public sealed class Order
 {

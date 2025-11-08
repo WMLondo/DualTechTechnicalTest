@@ -1,6 +1,13 @@
-﻿namespace DualTechTechnicalTest.Mappers;
+﻿using AutoMapper;
+using DualTechTechnicalTest.Domain.Entities;
+using DualTechTechnicalTest.Domain.Models.DataTransferObject;
 
-public class OrderDetailMapper
+namespace DualTechTechnicalTest.Mappers;
+
+public class OrderDetailMapper:Profile
 {
-    
+    public OrderDetailMapper()
+    {
+        CreateMap<OrderDetail, OrderDetailDataTransferObject>();
+    }
 }

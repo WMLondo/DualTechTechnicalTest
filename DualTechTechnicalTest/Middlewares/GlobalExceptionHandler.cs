@@ -4,34 +4,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DualTechTechnicalTest.Middlewares;
 
-public class GlobalExceptionHandler(RequestDelegate next,ILogger<ExceptionHandlingMiddleware> logger) : IExceptionHandler
+public class GlobalExceptionHandler(ILogger<GlobalExceptionHandler > logger) : IExceptionHandler
 {
-    public async Task InvokeAsync(HttpContext context)
-    {
-        try
-        {
-            await next(context);
-        }
-        catch (Exception ex)
-        {
-            logger.LogError(
-                ex, "Exception occurred: {Message}", ex.Message);
-
-            var response = Result<ExceptionHandlingMiddleware>.FailureResponse("Server Error");
-
-            context.Response.StatusCode =
-                StatusCodes.Status500InternalServerError;
-
-            await context.Response.WriteAsJsonAsync(response);
-        }
-    }
-
-    public async ValueTask<bool> TryHandleAsync(HttpContext httpContext, Exception ex, CancellationToken cancellationToken)
+    public async ValueTask<bool> TryHandleAsync(HttpContext httpContext, Exception exception, CancellationToken cancellationToken)
     {
         logger.LogError(
-            ex, "Exception occurred: {Message}", ex.Message);
+            exception, "Exception occurred: {Message}", exception.Message);
 
-        var response = Result<ExceptionHandlingMiddleware>.FailureResponse("Server Error");
+        var response = Result<GlobalExceptionHandler >.FailureResponse("Something went wrong.");
 
         await httpContext.Response
             .WriteAsJsonAsync(response, cancellationToken);

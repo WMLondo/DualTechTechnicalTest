@@ -1,6 +1,165 @@
 @DualTechTechnicalTest_HostAddress = http://localhost:5008
 
-GET {{DualTechTechnicalTest_HostAddress}}/weatherforecast/
+### Get All Clients
+GET {{DualTechTechnicalTest_HostAddress}}/api/Clients/getAll
 Accept: application/json
+
+###
+
+### Get Client by ID
+GET {{DualTechTechnicalTest_HostAddress}}/api/Clients/getById/1
+Accept: application/json
+
+###
+
+### Create New Client
+POST {{DualTechTechnicalTest_HostAddress}}/api/Clients/create
+Content-Type: application/json
+
+{
+  "id": 0,
+  "name": "John Doe",
+  "identity": "12345678A"
+}
+
+###
+
+### Update Existing Client
+PUT {{DualTechTechnicalTest_HostAddress}}/api/Clients/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "John Smith",
+  "identity": "12345678A"
+}
+
+###
+
+# PRODUCTS ENDPOINTS
+
+### Get All Products
+GET {{DualTechTechnicalTest_HostAddress}}/api/Products/getAll
+Accept: application/json
+
+###
+
+### Get Product by ID
+GET {{DualTechTechnicalTest_HostAddress}}/api/Products/getById/1
+Accept: application/json
+
+###
+
+### Create New Product
+POST {{DualTechTechnicalTest_HostAddress}}/api/Products/create
+Content-Type: application/json
+
+{
+  "id": 0,
+  "name": "Laptop Gaming",
+  "description": "High-performance gaming laptop with RTX 4060",
+  "price": 1299.99,
+  "stock": 25
+}
+
+###
+
+### Update Existing Product
+PUT {{DualTechTechnicalTest_HostAddress}}/api/Products/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Laptop Gaming Pro",
+  "description": "Updated high-performance gaming laptop with RTX 4070",
+  "price": 1499.99,
+  "stock": 20
+}
+
+###
+
+# ORDERS ENDPOINTS
+
+### Create New Order (Valid)
+POST {{DualTechTechnicalTest_HostAddress}}/api/Orders/create
+Content-Type: application/json
+
+{
+  "id": 0,
+  "clientId": 1,
+  "details": [
+    {
+      "productId": 1,
+      "quantity": 2
+    },
+    {
+      "productId": 2,
+      "quantity": 1
+    }
+  ]
+}
+
+###
+
+### Create Order - Invalid Client
+POST {{DualTechTechnicalTest_HostAddress}}/api/Orders/create
+Content-Type: application/json
+
+{
+  "id": 0,
+  "clientId": 999,
+  "details": [
+    {
+      "productId": 1,
+      "quantity": 1
+    }
+  ]
+}
+
+###
+
+### Create Order - No Details
+POST {{DualTechTechnicalTest_HostAddress}}/api/Orders/create
+Content-Type: application/json
+
+{
+  "id": 0,
+  "clientId": 1,
+  "details": []
+}
+
+###
+
+### Create Order - Invalid Product
+POST {{DualTechTechnicalTest_HostAddress}}/api/Orders/create
+Content-Type: application/json
+
+{
+  "id": 0,
+  "clientId": 1,
+  "details": [
+    {
+      "productId": 999,
+      "quantity": 1
+    }
+  ]
+}
+
+###
+
+### Create Order - Zero Quantity
+POST {{DualTechTechnicalTest_HostAddress}}/api/Orders/create
+Content-Type: application/json
+
+{
+  "id": 0,
+  "clientId": 1,
+  "details": [
+    {
+      "productId": 1,
+      "quantity": 0
+    }
+  ]
+}
 
 ###

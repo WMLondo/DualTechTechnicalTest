@@ -1,4 +1,4 @@
-﻿namespace DualTechTechnicalTest.Domain;
+﻿namespace DualTechTechnicalTest.Domain.Entities;
 
 public sealed class Product
 {
@@ -10,5 +10,7 @@ public sealed class Product
 
     public decimal Price { get; set; }
 
-    public bool IsAvailable { get; set; }
+    public int Stock  { get; set; }
+    
+    public ICollection<OrderDetail>? OrderDetails { get; set; }
 }
